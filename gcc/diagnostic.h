@@ -148,8 +148,9 @@ struct diagnostic_context
   /* Character used for caret diagnostics.  */
   char caret_chars[rich_location::STATICALLY_ALLOCATED_RANGES];
 
-  /* True if we should print any metadata associated with diagnostics.  */
-  bool show_metadata;
+  /* True if we should print any CWE identifiers associated with
+     diagnostics.  */
+  bool show_cwe;
 
   /* How should diagnostic_path objects be printed.  */
   enum diagnostic_path_format path_format;

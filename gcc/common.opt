@@ -1342,9 +1342,9 @@ fdiagnostics-show-option
 Common Var(flag_diagnostics_show_option) Init(1)
 Amend appropriate diagnostic messages with the command line option that controls them.
 
-fdiagnostics-show-metadata
-Common Var(flag_diagnostics_show_metadata) Init(1)
-Print additional metadata for diagnostic messages, where available.
+fdiagnostics-show-cwe
+Common Var(flag_diagnostics_show_cwe) Init(1)
+Print CWE identifiers for diagnostic messages, where available.
 
 fdiagnostics-path-format=
 Common Joined RejectNegative Var(flag_diagnostics_path_format) Enum(diagnostic_path_format) Init(DPF_INLINE_EVENTS)

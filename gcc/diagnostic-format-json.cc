@@ -298,7 +298,7 @@ diagnostic_output_format_init (diagnostic_context *context,
 	context->print_path = NULL; /* handled in json_end_diagnostic.  */
 
 	/* The metadata is handled in JSON format, rather than as text.  */
-	context->show_metadata = false;
+	context->show_cwe = false;
 
 	/* The option is handled in JSON format, rather than as text.  */
 	context->show_option_requested = false;

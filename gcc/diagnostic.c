@@ -187,7 +187,7 @@ diagnostic_initialize (diagnostic_context *context, int n_opts)
   diagnostic_set_caret_max_width (context, pp_line_cutoff (context->printer));
   for (i = 0; i < rich_location::STATICALLY_ALLOCATED_RANGES; i++)
     context->caret_chars[i] = '^';
-  context->show_metadata = false;
+  context->show_cwe = false;
   context->path_format = DPF_NONE;
   context->show_path_depths = false;
   context->show_option_requested = false;
@@ -948,14 +948,14 @@ get_cwe_url (int cwe)
   return xasprintf ("https://cwe.mitre.org/data/definitions/%i.html", cwe);
 }
 
-/* If DIAGNOSTIC has metadata, print it.
+/* If DIAGNOSTIC has a CWE identifier, print it.
 
    For example, if the diagnostic metadata associates it with CWE-119,
    " [CWE-119]" will be printed, suitably colorized, and with a URL of a
    description of the security issue.  */
 
 static void
-print_any_metadata (diagnostic_context *context,
+print_any_cwe (diagnostic_context *context,
 		    const diagnostic_info *diagnostic)
 {
   if (diagnostic->metadata == NULL)
@@ -1140,8 +1140,8 @@ diagnostic_report_diagnostic (diagnostic_context *context,
   pp_format (context->printer, &diagnostic->message);
   (*diagnostic_starter (context)) (context, diagnostic);
   pp_output_formatted_text (context->printer);
-  if (context->show_metadata)
-    print_any_metadata (context, diagnostic);
+  if (context->show_cwe)
+    print_any_cwe (context, diagnostic);
   if (context->show_option_requested)
     print_option_information (context, diagnostic, orig_diag_kind);
   (*diagnostic_finalizer (context)) (context, diagnostic, orig_diag_kind);

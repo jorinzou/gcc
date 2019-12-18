@@ -2411,8 +2411,8 @@ common_handle_option (struct gcc_options *opts,
       dc->parseable_fixits_p = value;
       break;
 
-    case OPT_fdiagnostics_show_metadata:
-      dc->show_metadata = value;
+    case OPT_fdiagnostics_show_cwe:
+      dc->show_cwe = value;
       break;
 
     case OPT_fdiagnostics_path_format_:
