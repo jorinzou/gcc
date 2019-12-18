@@ -433,7 +433,12 @@ Signal handling
 @cindex analyzer, debugging
 @cindex static analyzer, debugging
 
-@subsection Builtins for Debugging the Analyzer
+@subsection Special Functions for Debugging the Analyzer
+
+The analyzer recognizes various special functions by name, for use
+in debugging the analyzer.  Declarations can be seen in the testsuite
+in @file{analyzer-decls.h}.  None of these functions are actually
+implemented.
 
 Add:
 @smallexample
@@ -471,6 +476,18 @@ will dump just the number of nodes, and their IDs.
 @end smallexample
 
 will also dump all of the states within those nodes.
+
+@smallexample
+   __analyzer_dump_region_model ();
+@end smallexample
+will dump the region_model's state to stderr.
+
+@smallexample
+__analyzer_eval (expr);
+@end smallexample
+will emit a warning with text "TRUE", FALSE" or "UNKNOWN" based on the
+truthfulness of the argument.  This is useful for writing DejaGnu tests.
+
 
 @subsection Other Debugging Techniques
 

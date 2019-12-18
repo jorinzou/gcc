@@ -3,6 +3,8 @@
 
 /* Example of nested loops.  */
 
+#include "analyzer-decls.h"
+
 void test(void)
 {
   int i, j, k;

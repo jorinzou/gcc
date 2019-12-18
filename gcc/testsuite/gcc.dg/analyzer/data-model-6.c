@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "analyzer-decls.h"
 
 /* Verify that we don't accumulate state after a malloc/free pair.  */
 

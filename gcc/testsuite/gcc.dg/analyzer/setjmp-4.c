@@ -1,6 +1,7 @@
 /* { dg-additional-options "-fdiagnostics-show-line-numbers -fdiagnostics-nn-line-numbers -fdiagnostics-path-format=inline-events -fdiagnostics-show-caret" } */
 
 #include <setjmp.h>
+#include "analyzer-decls.h"
 
 extern int foo (int) __attribute__ ((__pure__));
 static jmp_buf buf;

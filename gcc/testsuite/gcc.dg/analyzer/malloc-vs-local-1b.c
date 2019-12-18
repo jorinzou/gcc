@@ -1,6 +1,7 @@
 /* { dg-additional-options "-fanalyzer-call-summaries" } */
 
 #include <stdlib.h>
+#include "analyzer-decls.h"
 
 extern int foo (int);
 

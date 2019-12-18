@@ -2,6 +2,7 @@
 
 #include <setjmp.h>
 #include <stddef.h>
+#include "analyzer-decls.h"
 
 extern int foo (int) __attribute__ ((__pure__));
 

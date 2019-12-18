@@ -3,6 +3,7 @@
 #include <stddef.h>
 #include <string.h>
 #include <stdlib.h>
+#include "analyzer-decls.h"
 
 typedef struct base_obj base_obj;
 typedef struct type_obj type_obj;

@@ -1,6 +1,7 @@
 /* { dg-additional-options "-fanalyzer-transitivity" } */
 
 #include <stdlib.h>
+#include "analyzer-decls.h"
 
 int test_1 (int a, int b)
 {

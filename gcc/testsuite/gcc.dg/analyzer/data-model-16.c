@@ -1,5 +1,7 @@
 /* Labels as values.  */
 
+#include "analyzer-decls.h"
+
 extern void foo (void);
 
 void *x, *y, *z;

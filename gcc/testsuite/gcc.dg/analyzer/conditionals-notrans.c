@@ -1,4 +1,5 @@
 /* { dg-additional-options "-fno-analyzer-transitivity" } */
+#include "analyzer-decls.h"
 
 void test (int i, int j)
 {

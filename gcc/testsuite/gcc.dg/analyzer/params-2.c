@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "analyzer-decls.h"
 
 static void ensure_equal (int a, int b)
 {

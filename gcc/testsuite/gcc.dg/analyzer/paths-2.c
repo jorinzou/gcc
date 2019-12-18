@@ -1,3 +1,5 @@
+#include "analyzer-decls.h"
+
 int test (int a)
 {
   if (a != 42 && a != 113) {

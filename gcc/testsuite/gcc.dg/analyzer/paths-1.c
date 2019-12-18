@@ -1,3 +1,5 @@
+#include "analyzer-decls.h"
+
 struct foo
 {
   int m_flag;

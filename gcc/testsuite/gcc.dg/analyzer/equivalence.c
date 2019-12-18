@@ -1,3 +1,5 @@
+#include "analyzer-decls.h"
+
 void test (int p, int q, int r)
 {
   if (p == 42)

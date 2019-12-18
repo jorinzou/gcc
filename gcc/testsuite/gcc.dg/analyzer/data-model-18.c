@@ -1,3 +1,5 @@
+#include "analyzer-decls.h"
+
 void test (int *p, int i, int j)
 {
   p[3] = 42;

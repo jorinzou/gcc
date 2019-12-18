@@ -1,3 +1,5 @@
+#include "analyzer-decls.h"
+
 static int called_function(int j)
 {
   int k;

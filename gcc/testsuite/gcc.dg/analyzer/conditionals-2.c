@@ -2,6 +2,7 @@
 /* { dg-additional-options "-O2" } */
 
 #include <stddef.h>
+#include "analyzer-decls.h"
 
 #define Z_NULL 0
 

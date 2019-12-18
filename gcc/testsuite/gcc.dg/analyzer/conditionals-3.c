@@ -1,5 +1,7 @@
 /* { dg-additional-options "-fno-analyzer-state-merge" } */
 
+#include "analyzer-decls.h"
+
 static void only_called_when_flag_a_true (int i)
 {
   __analyzer_eval (i == 42); /* { dg-warning "TRUE" } */

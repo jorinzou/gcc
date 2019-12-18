@@ -2,6 +2,7 @@
 
 #include <setjmp.h>
 #include <stddef.h>
+#include "analyzer-decls.h"
 
 extern void foo (int);
 

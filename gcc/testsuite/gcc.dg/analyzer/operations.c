@@ -1,3 +1,5 @@
+#include "analyzer-decls.h"
+
 void test (int i, int j)
 {
   int k, m;

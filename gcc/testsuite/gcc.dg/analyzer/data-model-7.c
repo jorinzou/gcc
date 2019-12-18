@@ -1,4 +1,5 @@
 /* { dg-additional-options "-fno-analyzer-state-merge" } */
+#include "analyzer-decls.h"
 
 int test_40 (int flag)
 {

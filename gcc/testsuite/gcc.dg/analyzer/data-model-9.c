@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include "analyzer-decls.h"
 
 struct foo
 {

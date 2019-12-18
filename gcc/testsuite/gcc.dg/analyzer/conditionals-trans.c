@@ -1,4 +1,5 @@
 /* { dg-additional-options "-fanalyzer-transitivity" } */
+#include "analyzer-decls.h"
 
 void test (int i, int j)
 {

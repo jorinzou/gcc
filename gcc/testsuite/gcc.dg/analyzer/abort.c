@@ -1,6 +1,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "analyzer-decls.h"
 
 extern void foo ();
 extern void bar ();

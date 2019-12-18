@@ -1,3 +1,5 @@
+#include "analyzer-decls.h"
+
 struct state
 {
   int mode;

@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "analyzer-decls.h"
 
 int test (int flag)
 {

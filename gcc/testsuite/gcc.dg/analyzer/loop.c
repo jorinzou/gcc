@@ -1,5 +1,7 @@
 /* { dg-additional-options "-fno-analyzer-state-purge" } */
 
+#include "analyzer-decls.h"
+
 void test(void)
 {
   int i;

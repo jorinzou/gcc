@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "analyzer-decls.h"
 
 /* Verify that ordering of writes doesn't matter when merging states.  */
 

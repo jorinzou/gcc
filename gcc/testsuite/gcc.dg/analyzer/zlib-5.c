@@ -1,5 +1,7 @@
 /* { dg-additional-options "-O3" } */
 
+#include "analyzer-decls.h"
+
 typedef long unsigned int size_t;
 typedef unsigned char Byte;
 typedef unsigned int uInt;

@@ -1,3 +1,5 @@
+#include "analyzer-decls.h"
+
 typedef void (*free_func)(void *opaque, void *address);
 
 typedef struct z_stream_s {

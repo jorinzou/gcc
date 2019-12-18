@@ -1,6 +1,7 @@
 /* { dg-additional-options "-fno-analyzer-call-summaries -fanalyzer-transitivity" } */
 
 #include <stdlib.h>
+#include "analyzer-decls.h"
 
 extern int foo (int);
 

@@ -1,3 +1,5 @@
+#include "analyzer-decls.h"
+
 union foo
 {
   int m_flag;

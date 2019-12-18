@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "analyzer-decls.h"
 
 typedef void (*fn_ptr_t) (void *);
 
