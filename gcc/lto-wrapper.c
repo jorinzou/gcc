@@ -1251,6 +1251,7 @@ run_gcc (unsigned argc, char *argv[])
   const char **argv_ptr;
   char *list_option_full = NULL;
   const char *linker_output = NULL;
+  const char *linker_output_or_a = "a";
   const char *collect_gcc, *collect_gcc_options;
   int parallel = 0;
   int jobserver = 0;
@@ -1271,6 +1272,7 @@ run_gcc (unsigned argc, char *argv[])
   bool linker_output_rel = false;
   bool skip_debug = false;
   unsigned n_debugobj;
+  static char current_dir[] = { '.', DIR_SEPARATOR, '\0' };
 
   /* Get the driver and options.  */
   collect_gcc = getenv ("COLLECT_GCC");
@@ -1407,6 +1409,10 @@ run_gcc (unsigned argc, char *argv[])
 	  skip_debug = option->arg && !strcmp (option->arg, "0");
 	  break;
 
+	case OPT_save_temps_:
+	case OPT_dumpdir:
+	case OPT_dumpbase:
+	case OPT_dumpbase_ext:
 	default:
 	  break;
 	}
@@ -1453,15 +1459,26 @@ run_gcc (unsigned argc, char *argv[])
 
       linker_output = &linker_output[base - output_dir];
       if (*output_dir == '\0')
-	{
-	  static char current_dir[] = { '.', DIR_SEPARATOR, '\0' };
-	  output_dir = current_dir;
-	}
+	output_dir = current_dir;
       if (!bit_bucket)
 	{
 	  obstack_ptr_grow (&argv_obstack, "-dumpdir");
 	  obstack_ptr_grow (&argv_obstack, output_dir);
 	}
+
+      obstack_ptr_grow (&argv_obstack, "-dumpbase-ext");
+      obstack_ptr_grow (&argv_obstack, ".");
+
+      obstack_ptr_grow (&argv_obstack, "-dumpbase");
+      linker_output_or_a = linker_output;
+    }
+  else
+    {
+      obstack_ptr_grow (&argv_obstack, "-dumpdir");
+      obstack_ptr_grow (&argv_obstack, current_dir);
+
+      obstack_ptr_grow (&argv_obstack, "-dumpbase-ext");
+      obstack_ptr_grow (&argv_obstack, ".");
 
       obstack_ptr_grow (&argv_obstack, "-dumpbase");
     }
@@ -1579,7 +1596,7 @@ cont1:
 	  strcat (flto_out, ".lto.o");
 	}
       else
-	flto_out = make_temp_file (".lto.o");
+	flto_out = make_temp_file_with_prefix ("a.", ".lto.o");
       obstack_ptr_grow (&argv_obstack, "-o");
       obstack_ptr_grow (&argv_obstack, flto_out);
     }
@@ -1589,11 +1606,11 @@ cont1:
       size_t list_option_len = strlen (list_option);
       char *tmp;
 
-      if (linker_output)
+      if (linker_output_or_a)
 	{
-	  char *dumpbase = (char *) xmalloc (strlen (linker_output)
+	  char *dumpbase = (char *) xmalloc (strlen (linker_output_or_a)
 					     + sizeof (".wpa") + 1);
-	  strcpy (dumpbase, linker_output);
+	  strcpy (dumpbase, linker_output_or_a);
 	  strcat (dumpbase, ".wpa");
 	  obstack_ptr_grow (&argv_obstack, dumpbase);
 	}
@@ -1608,10 +1625,10 @@ cont1:
       else
 	{
 	  char *prefix = NULL;
-	  if (linker_output)
+	  if (linker_output_or_a)
 	    {
-	      prefix = (char *) xmalloc (strlen (linker_output) + 2);
-	      strcpy (prefix, linker_output);
+	      prefix = (char *) xmalloc (strlen (linker_output_or_a) + 2);
+	      strcpy (prefix, linker_output_or_a);
 	      strcat (prefix, ".");
 	    }
 
@@ -1782,14 +1799,14 @@ cont:
 	  output_name = XOBFINISH (&env_obstack, char *);
 
 	  /* Adjust the dumpbase if the linker output file was seen.  */
-	  if (linker_output)
+	  if (linker_output_or_a)
 	    {
 	      char *dumpbase
-		  = (char *) xmalloc (strlen (linker_output)
+		  = (char *) xmalloc (strlen (linker_output_or_a)
 				      + sizeof (DUMPBASE_SUFFIX) + 1);
 	      snprintf (dumpbase,
-			strlen (linker_output) + sizeof (DUMPBASE_SUFFIX),
-			"%s.ltrans%u", linker_output, i);
+			strlen (linker_output_or_a) + sizeof (DUMPBASE_SUFFIX),
+			"%s.ltrans%u", linker_output_or_a, i);
 	      argv_ptr[0] = dumpbase;
 	    }
 
